@@ -7,15 +7,16 @@ import kotlinx.coroutines.launch
 import org.guardevour.sebbiatestapi.ClientManager
 import org.guardevour.sebbiatestapi.models.Category
 
-class CategoriesDropDownViewModel : ViewModel() {
+class CategoriesViewModel : ViewModel() {
 
     private val _categoriesStateList: SnapshotStateList<Category> = SnapshotStateList()
     val categoriesStateList = _categoriesStateList
     private suspend fun fillCategoriesList(){
         val receivedCategories = ClientManager.getAllCategories().list
-        if (receivedCategories != categoriesStateList.toList()){
+        if (receivedCategories != _categoriesStateList.toList()){
+            _categoriesStateList.clear()
             receivedCategories.forEach {
-                categoriesStateList.add(it)
+                _categoriesStateList.add(it)
             }
         }
     }
