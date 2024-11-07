@@ -14,7 +14,9 @@
 
 - Android SDK
 - Kotlin
-- Jetpack Compose (или другие подходящие технологии)
+- Jetpack Compose
+- Ktor Client
+- Koin
 
 ## Установка
 
